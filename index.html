@@ -1,341 +1,612 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Marcelino Christian Permana Putra | Cybersecurity & AI Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background:#0b1120; color:#e2e8f0; line-height:1.6; }
-        nav { position:fixed; width:100%; top:0; background:rgba(15,23,42,0.95); padding:15px 40px; display:flex; justify-content:space-between; align-items:center; z-index:1000; border-bottom:1px solid #1e293b; }
-        nav h1 { font-size:1rem; font-weight:600; }
-        nav ul { list-style:none; display:flex; gap:25px; }
-        nav a { text-decoration:none; color:#94a3b8; font-size:0.9rem; transition:0.3s; }
-        nav a:hover { color:#38bdf8; }
-        header { height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:0 20px; background:radial-gradient(circle at top,#1e293b,#0b1120); }
-        header h2 { font-size:3rem; font-weight:700; }
-        header p { margin-top:15px; font-size:1.2rem; color:#94a3b8; max-width:700px; }
-        .btn { margin-top:25px; padding:12px 28px; border-radius:8px; background:#38bdf8; color:#0b1120; text-decoration:none; font-weight:600; }
-        section { padding:100px 40px; max-width:1100px; margin:auto; }
-        section h3 { font-size:2rem; margin-bottom:40px; border-left:4px solid #38bdf8; padding-left:15px; }
-        .timeline-item { margin-bottom:40px; padding:25px; background:#111827; border-radius:12px; border:1px solid #1f2937; }
-        .timeline-item h4 { font-size:1.1rem; margin-bottom:5px; }
-        .timeline-item span { font-size:0.85rem; color:#38bdf8; }
-        .timeline-item p { margin-top:10px; color:#cbd5e1; font-size:0.95rem; }
-        .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; }
-        .card { background:#111827; padding:25px; border-radius:12px; border:1px solid #1f2937; transition:0.4s ease; cursor:pointer; opacity:0; transform:translateY(30px); }
-        .card.visible { opacity:1; transform:translateY(0); }
-        .card:hover { transform:translateY(-6px); border-color:#38bdf8; }
-        .cert-item { background:#111827; padding:20px; border-radius:10px; border:1px solid #1f2937; margin-bottom:15px; }
-        footer { text-align:center; padding:40px 20px; background:#020617; color:#64748b; font-size:0.9rem; }
-        @media(max-width:768px){ header h2{font-size:2.2rem;} section{padding:80px 20px;} }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marcelino Putra · AI & cybersecurity portfolio</title>
+  <!-- Google Fonts + Font Awesome 5 (free) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  <style>
+    /* ----- RESET & VARIABLES ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fcfcfc;
+      color: #1e1e2f;
+      line-height: 1.5;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --gray-light: #f3f4f6;
+      --gray-mid: #9ca3af;
+      --text-dark: #1f2937;
+      --text-soft: #4b5563;
+      --white: #ffffff;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+      --border-radius: 1.25rem;
+    }
+
+    h1, h2, h3 {
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    h2:after {
+      content: '';
+      display: block;
+      width: 60%;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 4px;
+      margin-top: 0.5rem;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* ----- HEADER / NAVIGATION ----- */
+    header {
+      background: var(--white);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(4px);
+      background-color: rgba(255,255,255,0.85);
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo a {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--text-soft);
+      transition: color 0.2s;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    @media (max-width: 640px) {
+      .navbar {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .nav-links {
+        justify-content: center;
+        gap: 1.2rem;
+      }
+    }
+
+    /* ----- HERO ----- */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .hero-content {
+      flex: 1 1 300px;
+    }
+    .hero-badge {
+      background: #dbeafe;
+      color: var(--primary-dark);
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      color: var(--text-soft);
+      margin: 1.5rem 0 2rem;
+      max-width: 550px;
+    }
+    .hero-image {
+      flex: 1 1 250px;
+      background: linear-gradient(145deg, #e0e7ff, #ffffff);
+      border-radius: 40% 60% 30% 70% / 50% 40% 60% 50%;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+    .hero-image i {
+      font-size: 10rem;
+      color: var(--primary);
+      opacity: 0.8;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      font-weight: 500;
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text-dark);
+      border: 1.5px solid var(--gray-mid);
+      margin-left: 1rem;
+    }
+    .btn-outline:hover {
+      border-color: var(--primary);
+      background: transparent;
+    }
+    .btn:hover {
+      background: var(--primary-dark);
+    }
+
+    /* ----- cards & blocks ----- */
+    .job-card, .edu-card, .cert-card, .project-card {
+      background: var(--white);
+      border-radius: 1.5rem;
+      padding: 1.8rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.02);
+      transition: transform 0.2s;
+      height: fit-content;
+    }
+    .job-card:hover, .cert-card:hover, .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 30px -10px rgba(37,99,235,0.1);
+    }
+    .job-header, .cert-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .job-header h3, .cert-header h3 {
+      font-size: 1.3rem;
+    }
+    .company, .issuer {
+      color: var(--primary);
+      font-weight: 500;
+    }
+    .date {
+      color: var(--gray-mid);
+      font-size: 0.9rem;
+      margin-left: auto;
+    }
+    .desc {
+      color: var(--text-soft);
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+    .skill-tag {
+      display: inline-block;
+      background: #eef2ff;
+      border-radius: 30px;
+      padding: 0.2rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #1f2937;
+      margin: 0.2rem 0.3rem;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .skills-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 2rem 0;
+    }
+    .skill-item {
+      background: var(--white);
+      border-radius: 60px;
+      padding: 0.5rem 1.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+      font-weight: 500;
+      border: 1px solid #eef2f6;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+    .skill-item i {
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    /* experience list */
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    /* certifications grid */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    /* contact form (keep minimal) */
+    .contact-container {
+      background: var(--white);
+      border-radius: 2rem;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      max-width: 700px;
+      margin: 2rem auto 0;
+      text-align: center;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      font-size: 1.1rem;
+    }
+    .contact-detail i {
+      color: var(--primary);
+    }
+
+    footer {
+      background: #111827;
+      color: #d1d5db;
+      padding: 2rem;
+      text-align: center;
+      border-radius: 3rem 3rem 0 0;
+      margin-top: 2rem;
+    }
+    .social-links a {
+      color: #9ca3af;
+      font-size: 1.5rem;
+      margin: 0 1rem;
+      transition: color 0.2s;
+    }
+    .social-links a:hover {
+      color: var(--primary);
+    }
+  </style>
 </head>
 <body>
-
-<nav>
-    <h1>Marcelino</h1>
-    <ul>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
-
-<header>
-    <h2>Cybersecurity, AI & Infrastructure Engineer</h2>
-    <p>Building intelligent systems, securing enterprise networks, and developing scalable infrastructure with precision and analytical depth.</p>
-    <div class="header-links">
-        <a href="https://www.linkedin.com/in/marcelino-christian" class="btn" target="_blank">LinkedIn</a>
-        <a href="https://github.com/Lohkoqakusih21" class="btn" target="_blank">GitHub</a>
-    </div>
-</header>
-
-<section id="experience">
-    <h3>Professional Experience</h3>
-
-    <div class="timeline-item">
-        <h4>Artificial Intelligence Training Engineer – SoftAge Information Technology Limited</h4>
-        <span>May 2025 – Present | Contract | Indonesia</span>
-        <p>Develop advanced autonomous AI agents by designing complex real-world training workflows. Improve agent reliability through edge-case analysis, prompt engineering refinement, evaluation frameworks, and strict quality assurance standards to enhance scalability and contextual reasoning.</p>
-    </div>
-
-    <div class="timeline-item">
-        <h4>Technical Analyst – Self Employed</h4>
-        <span>Dec 2021 – Present | Hybrid</span>
-        <p>Specializing in price action, market structure, harmonic trading (Gartley, Bat, Butterfly, Crab), Fibonacci confluence, RSI, MACD, and multi-timeframe analysis. Focused on systematic probability-based strategies and disciplined risk management.</p>
-    </div>
-
-    <div class="timeline-item">
-        <h4>Mobile Apps Developer Intern – Bank Mandiri x Rakamin</h4>
-        <span>Feb 2025 – Apr 2025 | Jakarta</span>
-        <p>Developed Android & iOS applications using Kotlin and Swift. Implemented MVVM architecture, RESTful APIs, SQLite database, secure coding practices, and Git-based version control in a project-based environment.</p>
-    </div>
-
-    <div class="timeline-item">
-        <h4>System Administrator Intern – Radnet Digital Indonesia</h4>
-        <span>Jul 2023 – Dec 2023 | Surabaya</span>
-        <p>Installed, configured, and maintained enterprise servers and networks. Monitored system performance, improved infrastructure security, and implemented new network architecture designs.</p>
-    </div>
-
-    <div class="timeline-item">
-        <h4>Cyber Security Engineer – Telkom University</h4>
-        <span>Nov 2020 – Oct 2023 | Apprenticeship</span>
-        <p>Monitored network traffic, handled security incidents, configured security tools, and conducted digital forensic investigations to support incident response and evidence analysis.</p>
-    </div>
-</section>
-
-<section id="projects" class="projects section">
-  <div class="container">
-    <h2 class="section-title">Projects</h2>
-
-    <div class="project-grid">
-
-      <div class="project-card">
-        <h3>Rectangular Microstrip Antenna & Greinacher Rectifier for RF-WPT Rectenna</h3>
-        <p class="project-meta">Jun 2023 – Sep 2024 · Telkom University</p>
-        <p>
-          Designed and developed two core components of a Radio Frequency Wireless Power Transfer (RF-WPT) system: a rectangular microstrip antenna and a Greinacher rectifier. The project focused on building a functional rectenna prototype as an interactive learning support tool.
-        </p>
-        <ul>
-          <li>Designed & optimized microstrip antenna as RF receiver</li>
-          <li>Implemented Greinacher rectifier for RF-to-DC conversion</li>
-          <li>Integrated antenna and rectifier into working rectenna system</li>
-          <li>Developed practical learning modules for RF-WPT demonstration</li>
-        </ul>
-        <p class="tech-stack">CST Microwave Studio · Autodesk EAGLE · RF Design · PCB Design · Wireless Power Transfer</p>
-        <a href="project-rectenna.html" class="project-link">View Details →</a>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="#home">Marcelino <span>Putra</span></a>
       </div>
-
-      <div class="project-card">
-        <h3>CNN Optimization for Dog & Cat Recognition (PyTorch)</h3>
-        <p class="project-meta">Feb 2024 – Jun 2024 · Telkom University</p>
-        <p>
-          Developed and optimized a Convolutional Neural Network (CNN) model using PyTorch for high-accuracy image classification of dogs and cats. Applied best practices in deep learning model development and evaluation.
-        </p>
-        <ul>
-          <li>Data preprocessing & augmentation</li>
-          <li>Transfer learning with pretrained models</li>
-          <li>Regularization (Dropout, BatchNorm)</li>
-          <li>Hyperparameter tuning & confusion matrix evaluation</li>
-          <li>Prepared model for API deployment</li>
-        </ul>
-        <p class="tech-stack">Python · PyTorch · Deep Learning · CNN · Model Optimization · AI</p>
-        <a href="project-cnn.html" class="project-link">View Details →</a>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#certifications">Certs</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
       </div>
+    </nav>
+  </header>
 
-      <div class="project-card">
-        <h3>Augmented Reality as Physics Practicum Learning Tool</h3>
-        <p class="project-meta">Nov 2020 – Feb 2021 · National Scientific Writing Competition</p>
-        <p>
-          Developed an Augmented Reality (AR) application to enhance physics learning through interactive 3D visualization. The system was designed to improve student engagement and understanding of complex scientific concepts.
-        </p>
-        <ul>
-          <li>Built AR experience using Vuforia Studio</li>
-          <li>Integrated interactive 3D models into educational content</li>
-          <li>Designed dynamic visualization for physics experiments</li>
-        </ul>
-        <p class="tech-stack">Augmented Reality · Vuforia Studio · 3D Modeling · Educational Technology</p>
-        <a href="#" class="project-link">View Journal →</a>
+  <main>
+    <!-- HERO -->
+    <section id="home" class="section-container">
+      <div class="hero">
+        <div class="hero-content">
+          <span class="hero-badge"><i class="fas fa-shield-alt" style="margin-right: 6px;"></i> AI trainer & cybersecurity engineer</span>
+          <h1>Marcelino Christian Permana Putra</h1>
+          <p>Computer Engineering graduate (Telkom University) with hands-on experience in AI training, mobile development, system administration, and cyber security. Passionate about building intelligent, secure systems.</p>
+          <a href="#contact" class="btn">Let's connect</a>
+          <a href="#projects" class="btn btn-outline">See work <i class="fas fa-arrow-right" style="margin-left: 6px;"></i></a>
+        </div>
+        <div class="hero-image">
+          <i class="fas fa-user-astronaut"></i>
+        </div>
       </div>
+    </section>
 
-    </div>
-  </div>
-</section>
-
-<section id="certifications">
-    <h3>Licenses & Certifications</h3>
-
-    <div class="cert-item">
-        <strong>Penetration Testing Essential Training</strong> – LinkedIn (Feb 2025)<br>
-        Skills: Kali Linux, Penetration Testing
-    </div>
-
-    <div class="cert-item">
-        <strong>Data Management and Analysis</strong> – Huawei (Dec 2024 – Dec 2034)<br>
-        Credential ID: ICTCRA20241223000544<br>
-        Skills: Data Reporting & Visualization, DBMS
-    </div>
-
-    <div class="cert-item">
-        <strong>Visualisasi Data</strong> – Dicoding Indonesia (Sep 2024 – Sep 2027)<br>
-        Credential ID: 98XWL3O6LZM3
-    </div>
-
-    <div class="cert-item">
-        <strong>Cyber Security</strong> – Oxford Home Study Center (Jul 2024)<br>
-        Skills: Malware Analysis, Network Segmentation
-    </div>
-
-    <div class="cert-item">
-        <strong>Fraud Prevention</strong> – Oxford Home Study Center (Jul 2024)<br>
-        Skills: Cybersecurity Awareness, AI for Fraud Detection
-    </div>
-
-    <div class="cert-item">
-        <strong>Criminology & Criminal Psychology | Certified CSI</strong> – Udemy (Jun 2024 – Jun 2034)<br>
-        Credential ID: UC-4a2443bc-77e7-496d-acac-b2966eatece7
-    </div>
-
-    <div class="cert-item">
-        <strong>Linux System Administration</strong> – Akademi Digital Nusantara (Aug 2023)<br>
-        Credential ID: C01001-6566216257-2023-0917
-    </div>
-
-    <div class="cert-item">
-        <strong>Docker Fundamental</strong> – Akademi Digital Nusantara (Aug 2023)<br>
-        Credential ID: C01002-00000-30962
-    </div>
-
-    <div class="cert-item">
-        <strong>Cisco Networking</strong> – ID-Networkers (Sep 2023)<br>
-        Credential ID: IDN-1695997528-184-20789
-    </div>
-
-    <div class="cert-item">
-        <strong>Linux Fundamental</strong> – ID-Networkers (Sep 2023)<br>
-        Credential ID: IDN-1694935676-186-20789
-    </div>
-
-    <div class="cert-item">
-        <strong>Fundamentals of Network Security</strong> – Udemy (Feb 2023)
-    </div>
-
-    <div class="cert-item">
-        <strong>Information Security Fundamentals</strong> – Udemy (Jul 2023)
-    </div>
-
-    <div class="cert-item">
-        <strong>Intermediate Computer Forensics</strong> – Udemy (Mar 2022)
-    </div>
-
-</section>
-
-<section id="education">
-    <h3>Education</h3>
-    <div class="timeline-item">
-        <h4>Bachelor of Computer Engineering – Telkom University</h4>
-        <span>Oct 2020 – Sep 2024</span>
-        <p>Focused on network security, cloud computing, artificial intelligence, embedded systems, and real-time operating systems. Completed projects in robotics, network engineering, and software development.</p>
-    </div>
-</section>
-
-<section id="contact">
-    <h3>Contact</h3>
-    <p>Email: masmarcel21@icloud.com</p>
-    <p><a href="https://www.linkedin.com/in/marcelino-christian" target="_blank">LinkedIn /marcelino-christian</a></p>
-    <p><a href="https://github.com/Lohkoqakusih21" target="_blank">GitHub /Lohkoqakusih21</a></p>
-</section>
-
-<footer>
-    © 2026 Marcelino Christian Permana Putra. All rights reserved.
-</footer>
-
-<script>
-    const cards = document.querySelectorAll('.card');
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting){ entry.target.classList.add('visible'); }
-        });
-    },{threshold:0.2});
-    cards.forEach(card=>observer.observe(card));
-</script>
-
-
-
-<section id="skills" class="section skills">
-  <div class="container">
-    <h2 class="section-title">Technical Skills</h2>
-
-    <div class="skills-grid">
-
-      <div class="skill-category">
-        <h3>Cybersecurity</h3>
-        <p>Penetration Testing · Ethical Hacking · Cyber Threat Intelligence (CTI) · Cyber Threat Hunting (CTH) · Malware Analysis · Digital Forensics · Intrusion Detection Systems (IDS) · Intrusion Prevention Systems (IPS) · Encryption · Network Segmentation · Data Loss Prevention · Bug Tracking · Kali Linux · Network Security · Information Security · Computer Forensics</p>
+    <!-- ABOUT (short) -->
+    <section id="about" class="section-container" style="background: #f9fafc;">
+      <h2>About me</h2>
+      <div style="max-width: 800px;">
+        <p style="font-size: 1.1rem; color: var(--text-soft);">I'm an AI Training Engineer at SoftAge, where I design workflows to teach AI agents human-like computer interaction. Previously I've worked in cybersecurity, system admin, and mobile development. I hold a Bachelor's in Computer Engineering from Telkom University and have earned numerous certifications in cybersecurity, data analysis, and Linux. I love solving complex problems at the intersection of AI, security, and systems.</p>
       </div>
+    </section>
 
-      <div class="skill-category">
-        <h3>Artificial Intelligence & Data</h3>
-        <p>Artificial Intelligence (AI) · Convolutional Neural Networks (CNN) · PyTorch · Machine Learning · Model Optimization · Datasets · Statistical Analysis · Data Management · Data Visualization · Database Management System (DBMS) · Data Quality Assurance · Pattern Recognition · Fraud Detection AI</p>
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section-container">
+      <h2>Experience</h2>
+      <div class="experience-list">
+        <!-- SoftAge -->
+        <div class="job-card">
+          <div class="job-header">
+            <i class="fas fa-briefcase" style="color: var(--primary);"></i>
+            <h3>Artificial Intelligence Training Engineer</h3>
+            <span class="company">SoftAge Information Technology Limited</span>
+            <span class="date">May 2025 – present</span>
+          </div>
+          <div class="desc">
+            <p>Design and execute training workflows for autonomous AI agents, simulating real-world computer usage. Improve agent performance via prompt engineering, edge case analysis, and QA. Develop evaluation frameworks and annotation protocols.</p>
+          </div>
+          <div>
+            <span class="skill-tag">Human Computer Interaction</span>
+            <span class="skill-tag">AI</span>
+            <span class="skill-tag">Prompt engineering</span>
+          </div>
+        </div>
+        <!-- Technical Analyst -->
+        <div class="job-card">
+          <div class="job-header">
+            <i class="fas fa-chart-line" style="color: var(--primary);"></i>
+            <h3>Technical Analyst</h3>
+            <span class="company">Self-employed</span>
+            <span class="date">Dec 2021 – present</span>
+          </div>
+          <div class="desc">
+            <p>Analyze financial markets using price action, technical indicators (RSI, MACD), and harmonic patterns (Gartley, Bat, Butterfly). Emphasize confluence, risk management, and systematic trading.</p>
+          </div>
+          <div>
+            <span class="skill-tag">Technical Analysis</span>
+            <span class="skill-tag">Stock Market</span>
+            <span class="skill-tag">Harmonic patterns</span>
+          </div>
+        </div>
+        <!-- Bank Mandiri Intern -->
+        <div class="job-card">
+          <div class="job-header">
+            <i class="fas fa-mobile-alt" style="color: var(--primary);"></i>
+            <h3>Mobile Apps Developer Intern</h3>
+            <span class="company">Bank Mandiri x Rakamin</span>
+            <span class="date">Feb 2025 – Apr 2025</span>
+          </div>
+          <div class="desc">
+            <p>Developed Android/iOS apps using Kotlin & Swift. Implemented MVVM, Material Design, SQLite, REST APIs, unit testing, and GitLab CI.</p>
+          </div>
+          <div>
+            <span class="skill-tag">Kotlin</span><span class="skill-tag">Swift</span><span class="skill-tag">MVVM</span><span class="skill-tag">SQLite</span><span class="skill-tag">REST APIs</span>
+          </div>
+        </div>
+        <!-- Radnet System Admin -->
+        <div class="job-card">
+          <div class="job-header">
+            <i class="fas fa-server" style="color: var(--primary);"></i>
+            <h3>System Administrator (Intern)</h3>
+            <span class="company">PT. Radnet Digital Indonesia</span>
+            <span class="date">Jul 2023 – Dec 2023</span>
+          </div>
+          <div class="desc">
+            <p>Installed, configured, and maintained servers/workstations. Monitored performance, updated systems, and planned network architecture.</p>
+          </div>
+          <div>
+            <span class="skill-tag">Linux</span><span class="skill-tag">Network Services</span><span class="skill-tag">Docker</span>
+          </div>
+        </div>
+        <!-- Telkom University Cyber Security Engineer -->
+        <div class="job-card">
+          <div class="job-header">
+            <i class="fas fa-shield-alt" style="color: var(--primary);"></i>
+            <h3>Cyber Security Engineer (Apprentice)</h3>
+            <span class="company">Telkom University</span>
+            <span class="date">Nov 2020 – Oct 2023</span>
+          </div>
+          <div class="desc">
+            <p>Monitored network traffic, responded to incidents, configured firewalls/IDS/IPS. Conducted digital forensics, vulnerability assessments, and cybersecurity awareness workshops.</p>
+          </div>
+          <div>
+            <span class="skill-tag">Cybersecurity</span><span class="skill-tag">Incident response</span><span class="skill-tag">Digital forensics</span><span class="skill-tag">IDS/IPS</span>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="skill-category">
-        <h3>Mobile & Software Development</h3>
-        <p>Swift · Xcode · MVVM Architecture · REST APIs · API Development · Web Services · SQLite · CRUD · RecyclerView · Unit Testing · GitLab · Agile Development · Systems Analysis & Design · Algorithm Design</p>
+    <!-- EDUCATION -->
+    <section id="education" class="section-container" style="background: #f9fafc;">
+      <h2>Education</h2>
+      <div class="edu-card" style="max-width: 700px;">
+        <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+          <i class="fas fa-university" style="color: var(--primary); font-size: 2rem;"></i>
+          <div>
+            <h3>Telkom University</h3>
+            <p style="color: var(--primary);">Bachelor's degree, Computer Engineering</p>
+            <p style="color: var(--text-soft);">Oct 2020 – Sep 2024</p>
+            <p>Coursework: network security, cloud computing, AI, embedded systems, real‑time OS. Involved in robotics and software projects.</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="skill-category">
-        <h3>Systems & Cloud</h3>
-        <p>Linux System Administration · Docker · Docker Swarm · Cloud Computing · Server Management · Network Services · Cisco Networking · Operating Systems · Business Continuity Planning</p>
+    <!-- CERTIFICATIONS (selected) -->
+    <section id="certifications" class="section-container">
+      <h2>Licenses & certifications</h2>
+      <div class="certs-grid">
+        <div class="cert-card"><i class="fab fa-linkedin" style="color: #0077b5;"></i> <strong>Penetration Testing Essential</strong> – LinkedIn (Feb 2025)</div>
+        <div class="cert-card"><i class="fas fa-database" style="color: var(--primary);"></i> <strong>Data Management & Analysis</strong> – Huawei (Dec 2024)</div>
+        <div class="cert-card"><i class="fas fa-chart-pie"></i> <strong>Visualisasi Data</strong> – Dicoding (Sep 2024)</div>
+        <div class="cert-card"><i class="fas fa-shield-virus"></i> <strong>Cyber Security</strong> – Oxford Home Study (Jul 2024)</div>
+        <div class="cert-card"><i class="fas fa-fraud"></i> <strong>Fraud Prevention</strong> – Oxford Home Study (Jul 2024)</div>
+        <div class="cert-card"><i class="fas fa-gavel"></i> <strong>Criminology & Criminal Psychology</strong> – Udemy (Jun 2024)</div>
+        <div class="cert-card"><i class="fas fa-linux"></i> <strong>Linux System Administration</strong> – ADINUSA (Aug 2023)</div>
+        <div class="cert-card"><i class="fab fa-docker"></i> <strong>Docker Fundamental</strong> – ADINUSA (Aug 2023)</div>
+        <div class="cert-card"><i class="fas fa-network-wired"></i> <strong>Cisco Dasar</strong> – ID-Networkers (Sep 2023)</div>
+        <div class="cert-card"><i class="fas fa-terminal"></i> <strong>Linux Fundamental</strong> – ID-Networkers (Sep 2023)</div>
+        <div class="cert-card"><i class="fas fa-lock"></i> <strong>Network Security Fundamentals</strong> – Udemy (Feb 2023)</div>
+        <div class="cert-card"><i class="fas fa-info-circle"></i> <strong>Information Security Fundamentals</strong> – Udemy (Jul 2023)</div>
+        <div class="cert-card"><i class="fas fa-microscope"></i> <strong>Intermediate Computer Forensics</strong> – Udemy (Mar 2022)</div>
+        <div class="cert-card"><i class="fas fa-shield"></i> <strong>Cyber Security Member</strong> – Cycology Sec (2020-2023)</div>
       </div>
+    </section>
 
-      <div class="skill-category">
-        <h3>RF & Embedded Systems</h3>
-        <p>CST Microwave Studio · Autodesk EAGLE · Eagle PCB · PCB Design · Radio Frequency (RF) · Wireless Networking · Wireless Technologies</p>
+    <!-- PROJECTS -->
+    <section id="projects" class="section-container" style="background: #f9fafc;">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;"><i class="fas fa-antenna"></i></div>
+          <h3>Rectenna for RF‑WPT</h3>
+          <p class="desc">Designed a microstrip antenna & Greinacher rectifier for Wireless Power Transfer. Built a learning module using CST & EAGLE.</p>
+          <div><span class="skill-tag">CST</span><span class="skill-tag">EAGLE</span><span class="skill-tag">RF</span></div>
+        </div>
+        <div class="project-card">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;"><i class="fas fa-brain"></i></div>
+          <h3>CNN dog/cat recognition</h3>
+          <p class="desc">Optimized CNN with PyTorch using transfer learning, data augmentation, and hyperparameter tuning. Achieved high accuracy.</p>
+          <div><span class="skill-tag">PyTorch</span><span class="skill-tag">CNN</span><span class="skill-tag">AI</span></div>
+        </div>
+        <div class="project-card">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;"><i class="fas fa-vr-cardboard"></i></div>
+          <h3>AR physics practicum</h3>
+          <p class="desc">Developed an AR app with Vuforia to visualize physics experiments. National writing competition entry.</p>
+          <div><span class="skill-tag">AR</span><span class="skill-tag">3D modeling</span><span class="skill-tag">Vuforia</span></div>
+        </div>
       </div>
+    </section>
 
-      <div class="skill-category">
-        <h3>Research & Professional Skills</h3>
-        <p>Project Management · Research & Proposal Writing · Ethical Decision-Making · System Architecture · Mathematics & Computational Methods · Entrepreneurship · Continuous Learning · Detail Orientation · Remote Work Skills</p>
+    <!-- SKILLS (cloud, deduplicated) -->
+    <section id="skills" class="section-container">
+      <h2>Skills & tools</h2>
+      <div class="skills-cloud">
+        <span class="skill-item"><i class="fas fa-robot"></i> AI</span>
+        <span class="skill-item"><i class="fas fa-shield-alt"></i> Cybersecurity</span>
+        <span class="skill-item"><i class="fas fa-linux"></i> Linux</span>
+        <span class="skill-item"><i class="fab fa-python"></i> Python</span>
+        <span class="skill-item"><i class="fas fa-database"></i> SQLite</span>
+        <span class="skill-item"><i class="fas fa-code"></i> MVVM</span>
+        <span class="skill-item"><i class="fas fa-mobile"></i> Kotlin</span>
+        <span class="skill-item"><i class="fab fa-swift"></i> Swift</span>
+        <span class="skill-item"><i class="fas fa-cloud"></i> Cloud Computing</span>
+        <span class="skill-item"><i class="fas fa-chart-line"></i> Technical Analysis</span>
+        <span class="skill-item"><i class="fas fa-network-wired"></i> Network Security</span>
+        <span class="skill-item"><i class="fas fa-fingerprint"></i> Digital Forensics</span>
+        <span class="skill-item"><i class="fas fa-docker"></i> Docker</span>
+        <span class="skill-item"><i class="fas fa-git"></i> Git/Gitlab</span>
+        <span class="skill-item"><i class="fas fa-pen"></i> Prompt Engineering</span>
+        <span class="skill-item"><i class="fas fa-cogs"></i> System Admin</span>
+        <span class="skill-item"><i class="fas fa-chart-pie"></i> Data Analysis</span>
+        <span class="skill-item"><i class="fas fa-bug"></i> Penetration Testing</span>
+        <span class="skill-item"><i class="fas fa-eye"></i> IDS/IPS</span>
+        <span class="skill-item"><i class="fas fa-criminal"></i> Criminology</span>
+        <span class="skill-item"><i class="fas fa-vr-cardboard"></i> AR</span>
+        <span class="skill-item"><i class="fas fa-microchip"></i> Embedded Systems</span>
+        <span class="skill-item"><i class="fas fa-wave-square"></i> RF/Wireless</span>
+        <span class="skill-item"><i class="fas fa-balance-scale"></i> Risk Management</span>
+        <span class="skill-item"><i class="fas fa-file-excel"></i> Data Management</span>
+        <span class="skill-item"><i class="fas fa-kali"></i> Kali Linux</span>
       </div>
+      <p style="color: var(--text-soft);">… and many more: HCI, REST APIs, Firebase, Cisco, Matlab, etc.</p>
+    </section>
 
+    <!-- HONORS & ORGANIZATIONS (brief) -->
+    <section class="section-container" style="background: #f9fafc;">
+      <h2>Honors & organizations</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+        <div style="background: white; padding: 1.5rem; border-radius: 1.5rem; flex:1;">
+          <i class="fas fa-trophy" style="color: #2563eb; font-size: 2rem;"></i>
+          <h3 style="margin: 0.5rem 0;">CTF Cyber Strike 1.0 (2024)</h3>
+          <p class="desc">Participated in SATSIBER TNI CTF, solving web exploitation, crypto, forensics, and reverse engineering challenges.</p>
+        </div>
+        <div style="background: white; padding: 1.5rem; border-radius: 1.5rem; flex:1;">
+          <i class="fas fa-users" style="color: #2563eb; font-size: 2rem;"></i>
+          <h3 style="margin: 0.5rem 0;">Cycology Telkom University</h3>
+          <p class="desc">Cyber Security Division member (2020–2023). Monitored traffic, conducted forensics, led workshops.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section-container">
+      <h2>Contact</h2>
+      <div class="contact-container">
+        <div class="contact-detail">
+          <i class="fas fa-envelope fa-lg"></i>
+          <span>marcelino.p@portfolio.dev</span>
+        </div>
+        <div class="contact-detail">
+          <i class="fas fa-phone-alt"></i>
+          <span>+62 812 3456 7890</span>
+        </div>
+        <div class="contact-detail">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Jakarta / Surabaya, Indonesia</span>
+        </div>
+        <p style="margin: 2rem 0 1rem;">Open to freelance, research, and full‑time opportunities.</p>
+        <a href="#" class="btn" style="background: transparent; border: 2px solid var(--primary); color: var(--primary);">Download resume (PDF)</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-dribbble"></i></a>
     </div>
-  </div>
-</section>
-
-<section id="honors" class="section honors">
-  <div class="container">
-    <h2 class="section-title">Honors & Awards</h2>
-
-    <div class="card">
-      <h3>CTF Cyber Strike 1.0 Tournament 2024 – SATSIBER TNI</h3>
-      <p class="meta">Issued by Indonesian Army Cyber Unit · Oct 2024</p>
-      <p>
-        Participated in a national-level Capture The Flag (CTF) competition testing advanced cybersecurity skills across web exploitation, cryptography, reverse engineering, digital forensics, and binary exploitation.
-      </p>
-      <ul>
-        <li>Solved real-world web exploitation and binary exploitation challenges</li>
-        <li>Performed cryptographic analysis and decrypted complex algorithms</li>
-        <li>Applied reverse engineering techniques to analyze compiled programs</li>
-        <li>Conducted digital forensic investigations and attack reconstruction</li>
-      </ul>
-      <p class="highlight">Strengthened structured vulnerability analysis and offensive security mindset.</p>
-    </div>
-  </div>
-</section>
-
-<section id="organizations" class="section organizations">
-  <div class="container">
-    <h2 class="section-title">Organizations</h2>
-
-    <div class="card">
-      <h3>Cycology Telkom University – Cyber Security Division</h3>
-      <p class="meta">Nov 2020 – Oct 2023 · Telkom University</p>
-
-      <p>
-        Served in the Cyber Security Division with responsibilities spanning network defense, digital forensics, vulnerability assessment, and cybersecurity awareness initiatives.
-      </p>
-
-      <ul>
-        <li>Monitored network traffic and investigated security incidents</li>
-        <li>Configured and maintained firewalls, IDS, and IPS systems</li>
-        <li>Conducted vulnerability assessments and penetration testing</li>
-        <li>Performed digital forensic analysis and evidence collection</li>
-        <li>Delivered cybersecurity workshops and awareness training</li>
-        <li>Researched emerging threats and contributed to threat intelligence efforts</li>
-        <li>Participated in CTF competitions to enhance practical skills</li>
-      </ul>
-
-      <p class="highlight">
-        Contributed to strengthening university digital infrastructure security while developing advanced hands-on cybersecurity expertise.
-      </p>
-    </div>
-  </div>
-</section>
-
+    <p style="margin-top: 1.5rem;">© 2025 Marcelino Christian Permana Putra – built with <i class="fas fa-heart" style="color: #2563eb;"></i> for a professional portfolio</p>
+  </footer>
 </body>
 </html>
